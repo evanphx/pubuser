@@ -1,6 +1,7 @@
 package pubuser
 
 import (
+  "encoding/json"
   "net/url"
 )
 
@@ -27,4 +28,16 @@ func Find(identifier string) (User, error) {
   }
 
   return nil, eNoSuchUser
+}
+
+func ToJson(user User) ([]byte, error) {
+  d := &HttpUserData {
+    UserName: user.UserName(),
+    Name: user.FullName(),
+    GravatarID: user.GravatarID(),
+    SSHKeys: user.SSHKeys(),
+    Groups: user.Groups(),
+  }
+
+  return json.Marshal(d)
 }

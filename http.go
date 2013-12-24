@@ -10,7 +10,7 @@ import (
 type HttpUserData struct {
   UserName string `json:"username"`
   Name string `json:"name"`
-  GravatarID string `json:"gravatar_id"`
+  GravatarID string `json:"gravatar_id,omitempty"`
   SSHKeys []string `json:"ssh_keys"`
   Groups []string `json:"groups"`
 }
