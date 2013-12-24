@@ -73,3 +73,15 @@ func GetHttpJson(url string) (*HttpUser, error) {
 
   return &HttpUser{url, user}, nil
 }
+
+func ParseJSON(buf []byte) (*HttpUser, error) {
+  user := &HttpUserData{}
+
+  err := json.Unmarshal(buf, user)
+
+  if err != nil {
+    return nil, eBadJson
+  }
+
+  return &HttpUser{"", user}, nil
+}
